@@ -1,4 +1,6 @@
 import Nav from './components/Nav';
+import ScrollProgress from './components/ScrollProgress';
+import Divider from './components/Divider';
 import Hero from './components/Hero';
 import About from './components/About';
 import Achievements from './components/Achievements';
@@ -13,12 +15,15 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
+      <ScrollProgress />
       <Nav />
       <main id="main">
         <Hero />
+        <Divider />
         <About />
         <Achievements />
         <Work />
+        <Divider flip />
         <Skills />
         <Contact />
       </main>

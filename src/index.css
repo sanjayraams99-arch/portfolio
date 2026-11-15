@@ -3,20 +3,27 @@
    Change these values to re-theme the whole site at once.
    ============================================================ */
 :root {
-  --bg: #0a0c10;
-  --bg-soft: #0d1117;
-  --surface: #12171f;
-  --surface-hover: #161c26;
+  --bg: #08080b;
+  --bg-soft: #0c0d11;
+  --surface: #111216;
+  --surface-hover: #17181e;
   --line: rgba(255, 255, 255, 0.09);
-  --line-strong: rgba(255, 255, 255, 0.16);
+  --line-strong: rgba(255, 255, 255, 0.18);
 
-  --text: #e9edf5;
-  --muted: #95a0b3;
-  --muted-strong: #b9c2d0;
+  --text: #f0eff3;
+  --muted: #979cab;
+  --muted-strong: #bcbfc9;
 
-  --accent: #7c9cff;
-  --accent-soft: rgba(124, 156, 255, 0.14);
-  --accent-2: #5eead4;
+  /* Metal Fury: crimson steel + L-Drago gold */
+  --accent: #e5382f;
+  --accent-soft: rgba(229, 56, 47, 0.14);
+  --accent-deep: #c9291f;
+  --accent-2: #f3b13c;
+  --metal: #9aa5b8;
+  /* white on crimson buttons (5.5:1) */
+  --on-accent: #ffffff;
+  /* dark ink on the gold gradient marks (4.5:1+) */
+  --on-bright: #1a0a06;
 
   --radius-sm: 10px;
   --radius: 16px;
@@ -85,7 +92,7 @@ ul {
 
 ::selection {
   background: var(--accent);
-  color: #08101f;
+  color: var(--on-accent);
 }
 
 :focus-visible {
@@ -112,8 +119,8 @@ ul {
   left: 16px;
   z-index: 200;
   padding: 12px 18px;
-  background: var(--accent);
-  color: #08101f;
+  background: var(--accent-deep);
+  color: var(--on-accent);
   font-weight: 600;
   border-radius: var(--radius-sm);
   transition: top 0.2s var(--ease);
@@ -141,8 +148,8 @@ ul {
   padding: 13px 22px;
   border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--accent);
-  color: #08101f;
+  background: var(--accent-deep);
+  color: var(--on-accent);
   font: inherit;
   font-size: 0.94rem;
   font-weight: 600;
@@ -150,13 +157,13 @@ ul {
   cursor: pointer;
   transition: transform 0.18s var(--ease), box-shadow 0.25s var(--ease),
     background 0.2s var(--ease), border-color 0.2s var(--ease);
-  box-shadow: 0 8px 24px -12px rgba(124, 156, 255, 0.8);
+  box-shadow: 0 8px 24px -12px rgba(229, 56, 47, 0.45);
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  background: #96b0ff;
-  box-shadow: 0 14px 32px -12px rgba(124, 156, 255, 0.85);
+  background: #d63a2e;
+  box-shadow: 0 14px 32px -12px rgba(229, 56, 47, 0.5);
 }
 
 .btn:active {
@@ -229,8 +236,9 @@ ul {
   width: 30px;
   height: 30px;
   border-radius: 9px;
-  background: linear-gradient(140deg, var(--accent), var(--accent-2));
-  color: #08101f;
+  background: linear-gradient(140deg, #b3231a, var(--accent-deep));
+  background-color: var(--accent-deep);
+  color: var(--on-accent);
   font-weight: 800;
   font-size: 0.85rem;
   flex: 0 0 auto;
@@ -315,7 +323,7 @@ ul {
 .nav__mobile .btn {
   margin-top: 12px;
   border-bottom: 0;
-  color: #08101f;
+  color: var(--on-accent);
 }
 
 /* ============================================================
@@ -328,22 +336,50 @@ ul {
   isolation: isolate;
 }
 
-.hero__glow {
+/* Canvas "metal fury" layer, sits behind the hero content */
+.hero__fx {
   position: absolute;
-  top: -280px;
-  left: 50%;
-  translate: -50% 0;
-  width: min(1000px, 130vw);
-  height: 620px;
-  background: radial-gradient(
-    closest-side,
-    rgba(124, 156, 255, 0.22),
-    rgba(94, 234, 212, 0.08) 55%,
-    transparent 78%
-  );
-  filter: blur(20px);
+  inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: -2;
   pointer-events: none;
+}
+
+/* Large 龍牙 watermark: dragon fang */
+.hero__watermark {
+  position: absolute;
+  top: 12%;
+  right: max(2vw, -40px);
+  z-index: -1;
+  margin: 0;
+  font-size: clamp(9rem, 26vw, 22rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  writing-mode: vertical-rl;
+  background: linear-gradient(
+    160deg,
+    rgba(243, 177, 60, 0.16),
+    rgba(229, 56, 47, 0.06) 45%,
+    transparent 75%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+  animation: watermark-float 14s ease-in-out infinite;
+}
+
+@keyframes watermark-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
 }
 
 .hero__grid {
@@ -380,16 +416,39 @@ ul {
   width: 7px;
   height: 7px;
   border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(229, 56, 47, 0.18);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px rgba(229, 56, 47, 0.18);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(229, 56, 47, 0);
+  }
+}
+
+.pill__tag {
+  padding: 2px 8px;
+  border-radius: 999px;
   background: var(--accent-2);
-  box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.18);
+  color: var(--on-bright);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.5;
 }
 
 .hero__kicker {
   margin-top: 22px;
   font-size: 0.95rem;
-  font-weight: 550;
+  font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--accent);
+  color: var(--accent-2);
 }
 
 .hero__title {
@@ -447,6 +506,76 @@ ul {
 }
 
 /* ============================================================
+   Scroll progress bar
+   ============================================================ */
+.progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 150;
+  height: 2px;
+  background: transparent;
+  pointer-events: none;
+}
+
+.progress__bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 12px rgba(229, 56, 47, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.progress[data-active='true'] .progress__bar {
+  opacity: 1;
+}
+
+/* ============================================================
+   Lightning divider
+   ============================================================ */
+.divider {
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+
+.divider[data-visible='true'] {
+  opacity: 1;
+}
+
+.divider__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.divider__path {
+  fill: none;
+  stroke: rgba(243, 177, 60, 0.35);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 2600;
+  stroke-dashoffset: 2600;
+  filter: drop-shadow(0 0 6px rgba(229, 56, 47, 0.35));
+}
+
+.divider[data-visible='true'] .divider__path {
+  animation: draw-bolt 1.6s var(--ease) forwards;
+}
+
+@keyframes draw-bolt {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ============================================================
    Generic section
    ============================================================ */
 .section {
@@ -481,7 +610,7 @@ ul {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-2);
   margin-bottom: 14px;
 }
 
@@ -619,10 +748,10 @@ ul {
   place-items: center;
   background: radial-gradient(
       circle at 25% 20%,
-      rgba(124, 156, 255, 0.18),
+      rgba(229, 56, 47, 0.18),
       transparent 60%
     ),
-    radial-gradient(circle at 80% 80%, rgba(94, 234, 212, 0.12), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(243, 177, 60, 0.14), transparent 55%),
     var(--bg-soft);
 }
 
@@ -768,7 +897,7 @@ ul {
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-2);
   margin-bottom: 14px;
 }
 
@@ -997,17 +1126,19 @@ ul {
 
 /* ============================================================
    Scroll reveal
+   Uses transform + blur rather than opacity so text colour and
+   contrast stay constant at every frame of the animation.
    ============================================================ */
 [data-reveal] {
-  opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+  filter: blur(5px);
+  transition: transform 0.7s var(--ease), filter 0.7s var(--ease);
   transition-delay: var(--delay, 0ms);
 }
 
 [data-reveal][data-visible='true'] {
-  opacity: 1;
   transform: none;
+  filter: none;
 }
 
 /* ============================================================
@@ -1089,7 +1220,7 @@ ul {
   }
 
   [data-reveal] {
-    opacity: 1;
     transform: none;
+    filter: none;
   }
 }

@@ -16,6 +16,7 @@ export const site = {
   email: 'sanjayraams99@gmail.com',
   phone: '+91 73057 89271',
   availability: 'Open to graduate roles & internships',
+  badge: 'Metal Fury',
 
   // Downloadable résumé (the PDF lives in the public folder)
   resume: '/resume.pdf',

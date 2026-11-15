@@ -32,14 +32,33 @@ Replace `public/resume.pdf` with a newer export (keep the same filename). Every
 
 ## Change the colours
 
-Open `src/index.css` and edit the tokens at the very top:
+The site uses a **Metal Fury** palette — crimson steel and L-Drago gold. Open
+`src/index.css` and edit the tokens at the very top:
 
 ```css
---bg: #0a0c10;        /* page background */
---text: #e9edf5;      /* main text */
---accent: #7c9cff;    /* buttons and highlights */
---accent-2: #5eead4;  /* secondary highlight */
+--bg: #08080b;        /* page background */
+--text: #f0eff3;      /* main text */
+--accent: #e5382f;    /* crimson — buttons, links, highlights */
+--accent-2: #f3b13c;  /* gold — secondary highlights */
+--metal: #9aa5b8;     /* steel — ring and divider tones */
 ```
+
+## The "Metal Fury" animation
+
+Three small files drive it:
+
+- `src/components/HeroFX.jsx` — the canvas layer in the hero: a spinning
+  segmented metal ring, lightning arcs and rising embers. Ring rotation and
+  ember speed respond to scroll position. It pauses when the hero leaves the
+  viewport, caps the pixel ratio at 2, and draws a single static frame when the
+  visitor prefers reduced motion.
+- `src/components/ScrollProgress.jsx` — the crimson-to-gold bar pinned to the
+  top that fills as you scroll.
+- `src/components/Divider.jsx` — the lightning bolt that draws itself between
+  sections as it comes into view.
+
+To tone the effect down, lower `EMBER_COUNT` in `HeroFX.jsx`, or remove
+`<HeroFX />` from `src/components/Hero.jsx`.
 
 ## Add project images
 

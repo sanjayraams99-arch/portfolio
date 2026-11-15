@@ -1,5 +1,6 @@
 import { hero, site, stats } from '../content';
 import { useReveal } from '../useReveal';
+import HeroFX from './HeroFX';
 
 export default function Hero() {
   const ref = useReveal();
@@ -7,13 +8,17 @@ export default function Hero() {
 
   return (
     <section className="hero" id="top">
-      <div className="hero__glow" aria-hidden="true" />
+      <HeroFX />
       <div className="hero__grid" aria-hidden="true" />
+      <p className="hero__watermark" aria-hidden="true">
+        龍牙
+      </p>
 
       <div className="container hero__inner" ref={ref} data-reveal>
         <p className="pill">
           <span className="pill__dot" aria-hidden="true" />
           {site.availability}
+          <span className="pill__tag">{site.badge}</span>
         </p>
 
         <h1 className="hero__title">
