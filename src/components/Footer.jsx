@@ -31,6 +31,11 @@ export default function Footer() {
           <li>
             <a href={`mailto:${site.email}`}>Email</a>
           </li>
+          <li>
+            <a href={site.resume} download>
+              Résumé
+            </a>
+          </li>
         </ul>
       </div>
 

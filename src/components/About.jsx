@@ -10,6 +10,19 @@ export default function About() {
         <div className="section__head">
           <p className="eyebrow">{about.eyebrow}</p>
           <h2 className="section__title">{about.heading}</h2>
+          <p className="section__meta">
+            Based in {site.location}
+          </p>
+
+          <ul className="education">
+            {about.education.map((item) => (
+              <li key={item.degree}>
+                <p className="education__degree">{item.degree}</p>
+                <p className="education__school">{item.school}</p>
+                {item.meta ? <p className="education__meta">{item.meta}</p> : null}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="section__body">
@@ -34,10 +47,6 @@ export default function About() {
               </li>
             ))}
           </ul>
-
-          <p className="section__meta">
-            Based in {site.location} · Working with clients worldwide
-          </p>
         </div>
       </div>
     </section>

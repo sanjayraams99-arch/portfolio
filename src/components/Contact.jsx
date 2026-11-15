@@ -36,6 +36,9 @@ export default function Contact() {
           <a className="contact__mail" href={`mailto:${site.email}`}>
             {site.email}
           </a>
+          <p className="contact__phone">
+            <a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a>
+          </p>
         </div>
 
         <form className="form" onSubmit={handleSubmit}>

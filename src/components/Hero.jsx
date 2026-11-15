@@ -3,6 +3,7 @@ import { useReveal } from '../useReveal';
 
 export default function Hero() {
   const ref = useReveal();
+  const isDownload = /\.pdf$/i.test(hero.secondaryCta.href);
 
   return (
     <section className="hero" id="top">
@@ -23,6 +24,7 @@ export default function Hero() {
           ))}
         </h1>
 
+        <p className="hero__kicker">{site.role}</p>
         <p className="hero__body">{hero.body}</p>
 
         <div className="hero__actions">
@@ -39,7 +41,23 @@ export default function Hero() {
               />
             </svg>
           </a>
-          <a className="btn btn--ghost" href={hero.secondaryCta.href}>
+          <a
+            className="btn btn--ghost"
+            href={hero.secondaryCta.href}
+            download={isDownload ? '' : undefined}
+          >
+            {isDownload ? (
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                <path
+                  d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            ) : null}
             {hero.secondaryCta.label}
           </a>
         </div>

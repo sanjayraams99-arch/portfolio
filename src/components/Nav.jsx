@@ -39,7 +39,7 @@ export default function Nav() {
             </a>
           ))}
           <a className="btn btn--sm" href="#contact">
-            Hire me
+            Get in touch
           </a>
         </nav>
 
@@ -65,7 +65,7 @@ export default function Nav() {
           </a>
         ))}
         <a className="btn" href="#contact" onClick={() => setOpen(false)}>
-          Hire me
+          Get in touch
         </a>
       </div>
     </header>
