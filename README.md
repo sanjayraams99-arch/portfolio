@@ -60,6 +60,20 @@ Three small files drive it:
 To tone the effect down, lower `EMBER_COUNT` in `HeroFX.jsx`, or remove
 `<HeroFX />` from `src/components/Hero.jsx`.
 
+## Page transitions
+
+`src/components/PageTransition.jsx` turns every in-page link (nav, buttons,
+footer) into a curtain wipe: a dark crimson panel sweeps up over the screen,
+the page jumps to the section while it is covered, then the panel sweeps away.
+It takes about 0.84 s end to end.
+
+It is deliberately skipped for the skip-link, external links, the résumé
+download, and anyone using "reduce motion" — those jump instantly instead.
+Clicks made mid-wipe are queued rather than dropped. To change the speed, edit
+`COVER_MS`, `HOLD_MS` and `LEAVE_MS` at the top of that file (keep the CSS
+`transition` durations in `index.css` in sync), or delete the component from
+`src/App.jsx` to remove the effect entirely.
+
 ## Add project images
 
 1. Drop images into `public/`, e.g. `public/baja-atv-1.jpg`

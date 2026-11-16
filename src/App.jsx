@@ -1,5 +1,6 @@
 import Nav from './components/Nav';
 import ScrollProgress from './components/ScrollProgress';
+import PageTransition from './components/PageTransition';
 import Divider from './components/Divider';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -16,6 +17,7 @@ export default function App() {
         Skip to content
       </a>
       <ScrollProgress />
+      <PageTransition />
       <Nav />
       <main id="main">
         <Hero />
