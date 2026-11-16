@@ -150,7 +150,16 @@ export const work = {
         'Designed a fixed-wing aircraft in CAD and validated its aerodynamics through CFD. Prepared CAM data and fabricated components using CO₂ laser cutting, then supported assembly, testing and validation with the team.',
       tags: ['CAD', 'CFD', 'Laser cutting'],
       year: '2025',
-      images: [],
+      images: [
+        {
+          src: '/ddc-aircraft-1.jpg',
+          alt: 'Team Yantramanav fixed-wing aircraft built for the Drone Development Challenge — photo 1',
+        },
+        {
+          src: '/ddc-aircraft-2.jpg',
+          alt: 'Team Yantramanav fixed-wing aircraft built for the Drone Development Challenge — photo 2',
+        },
+      ],
     },
     {
       title: 'Autonomous Drone — ADDC',
