@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Replace yoursite.com with your real domain once you have one
-Sitemap: https://yoursite.com/sitemap.xml
+Sitemap: https://sanjayraam.netlify.app/sitemap.xml
