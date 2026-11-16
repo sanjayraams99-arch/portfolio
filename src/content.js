@@ -134,6 +134,10 @@ export const work = {
           src: '/baja-atv-3.jpg',
           alt: 'Team Yantramanav BAJA SAEINDIA 2026 all-terrain vehicle — photo 3',
         },
+        {
+          src: '/baja-atv-4.jpg',
+          alt: 'Team Yantramanav BAJA SAEINDIA 2026 all-terrain vehicle — photo 4',
+        },
       ],
     },
     {
