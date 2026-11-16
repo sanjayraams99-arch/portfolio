@@ -1,8 +1,24 @@
+import { useState } from 'react';
 import { work } from '../content';
 import { useReveal } from '../useReveal';
 
+/**
+ * Accepts either a plain list of paths or a list of { src, alt } objects,
+ * so editing content.js stays simple.
+ */
+function normaliseImages(item) {
+  const raw = item.images ?? (item.image ? [item.image] : []);
+  return raw.map((entry, i) =>
+    typeof entry === 'string'
+      ? { src: entry, alt: `${item.title} — photo ${i + 1}` }
+      : entry,
+  );
+}
+
 function ProjectCard({ item, index }) {
   const ref = useReveal();
+  const images = normaliseImages(item);
+  const [active, setActive] = useState(0);
 
   return (
     <article
@@ -12,8 +28,35 @@ function ProjectCard({ item, index }) {
       style={{ '--delay': `${index * 80}ms` }}
     >
       <div className="card__media">
-        {item.image ? (
-          <img src={item.image} alt={`${item.title} — ${item.category}`} loading="lazy" />
+        {images.length > 0 ? (
+          <>
+            <img
+              key={images[active].src}
+              src={images[active].src}
+              alt={images[active].alt}
+              loading="lazy"
+              decoding="async"
+            />
+
+            {images.length > 1 ? (
+              <div
+                className="card__dots"
+                role="group"
+                aria-label={`${item.title} photos`}
+              >
+                {images.map((img, i) => (
+                  <button
+                    key={img.src}
+                    type="button"
+                    className="card__dot"
+                    aria-label={`Show photo ${i + 1} of ${images.length}`}
+                    aria-pressed={i === active}
+                    onClick={() => setActive(i)}
+                  />
+                ))}
+              </div>
+            ) : null}
+          </>
         ) : (
           <div className="card__placeholder" aria-hidden="true">
             <span>{item.title.charAt(0)}</span>

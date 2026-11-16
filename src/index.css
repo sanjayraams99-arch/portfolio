@@ -724,6 +724,7 @@ ul {
 }
 
 .card__media {
+  position: relative;
   aspect-ratio: 16 / 10;
   background: var(--bg-soft);
   border-bottom: 1px solid var(--line);
@@ -735,6 +736,63 @@ ul {
   height: 100%;
   object-fit: cover;
   transition: scale 0.5s var(--ease);
+  animation: img-in 0.4s var(--ease);
+}
+
+@keyframes img-in {
+  from {
+    opacity: 0.35;
+    scale: 1.02;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* Photo switcher on cards with more than one image */
+.card__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  translate: -50% 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(8, 8, 11, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.card__dot {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.card__dot::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  transition: width 0.22s var(--ease), background 0.22s var(--ease);
+}
+
+.card__dot:hover::after {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.card__dot[aria-pressed='true']::after {
+  width: 18px;
+  background: var(--accent-2);
 }
 
 .card:hover .card__media img {

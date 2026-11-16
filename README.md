@@ -62,10 +62,21 @@ To tone the effect down, lower `EMBER_COUNT` in `HeroFX.jsx`, or remove
 
 ## Add project images
 
-1. Drop an image into `public/`, e.g. `public/baja-atv.jpg`
-2. Set `image: '/baja-atv.jpg'` in the matching entry of `work.items`
+1. Drop images into `public/`, e.g. `public/baja-atv-1.jpg`
+2. In `src/content.js`, list them in the project's `images` array:
 
-Leave `image: ''` to keep the generated gradient placeholder.
+```js
+images: [
+  { src: '/baja-atv-1.jpg', alt: 'Describe what is in the photo' },
+  { src: '/baja-atv-2.jpg', alt: 'Describe what is in the photo' },
+],
+```
+
+Cards with more than one image get a dot switcher; a single image shows on its
+own. Leave `images: []` to keep the generated gradient placeholder.
+
+Photos straight from a phone are 4–5 MB each and will slow the page down.
+Resize them to about 1600px wide first.
 
 ## Build and deploy
 

@@ -118,7 +118,21 @@ export const work = {
         'Led Team Yantramanav through design, fabrication, testing and validation. Designed the roll cage, chassis, suspension and key components, ran FEA and mathematical design in Modelon Impact, and prepared CAM data for CNC/VMC machining and laser-cut fabrication.',
       tags: ['CAD', 'FEA', 'CAM', 'Team lead'],
       year: '2026',
-      image: '',
+      // Add more photos here — they appear as a little gallery on the card
+      images: [
+        {
+          src: '/baja-atv-1.jpg',
+          alt: 'Team Yantramanav BAJA SAEINDIA 2026 all-terrain vehicle — photo 1',
+        },
+        {
+          src: '/baja-atv-2.jpg',
+          alt: 'Team Yantramanav BAJA SAEINDIA 2026 all-terrain vehicle — photo 2',
+        },
+        {
+          src: '/baja-atv-3.jpg',
+          alt: 'Team Yantramanav BAJA SAEINDIA 2026 all-terrain vehicle — photo 3',
+        },
+      ],
     },
     {
       title: 'AeroAid — Medical Delivery Drone',
@@ -127,7 +141,7 @@ export const work = {
         'Selected for MSME Project Support 2026 and secured ₹5 lakh in government sponsorship. Contributed to CAD design, system development and project planning for medical delivery applications.',
       tags: ['CAD', 'Systems', 'Project planning'],
       year: '2026',
-      image: '',
+      images: [],
     },
     {
       title: 'Fixed-Wing Aircraft — DDC',
@@ -136,7 +150,7 @@ export const work = {
         'Designed a fixed-wing aircraft in CAD and validated its aerodynamics through CFD. Prepared CAM data and fabricated components using CO₂ laser cutting, then supported assembly, testing and validation with the team.',
       tags: ['CAD', 'CFD', 'Laser cutting'],
       year: '2025',
-      image: '',
+      images: [],
     },
     {
       title: 'Autonomous Drone — ADDC',
@@ -145,7 +159,7 @@ export const work = {
         'Designed an autonomous drone in CAD and evaluated its aerodynamics through CFD. Calibrated flight controllers, configured autonomous missions, and completed full drone assembly and integration for competition.',
       tags: ['CAD', 'CFD', 'Flight controller'],
       year: '2025',
-      image: '',
+      images: [],
     },
   ],
 };
