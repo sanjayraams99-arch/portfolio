@@ -22,7 +22,12 @@ To update later, rebuild and drag `dist` again.
 
 ## Option B — GitHub + Netlify (automatic deploys)
 
-### 1. Set your Git identity (once)
+### 1. What is already done
+
+This folder is already a Git repository with all work committed on a branch
+called `main`, and the author is set to Sanjay Raam C. Nothing to do here.
+
+If you ever clone it onto another machine, set your identity once:
 
 ```powershell
 git config --global user.name "Sanjay Raam C"
@@ -32,16 +37,24 @@ git config --global user.email "sanjayraams99@gmail.com"
 ### 2. Create an empty repository on GitHub
 
 Go to <https://github.com/new>, name it `portfolio`, and **do not** add a
-README or .gitignore.
+README, .gitignore or licence — the project already has them.
 
 ### 3. Push this project
 
+Replace `YOUR-USERNAME` with your GitHub username, then run:
+
 ```powershell
-git add -A
-git commit -m "Portfolio site"
-git branch -M main
 git remote add origin https://github.com/YOUR-USERNAME/portfolio.git
 git push -u origin main
+```
+
+A browser window opens once asking you to sign in to GitHub — approve it and
+the push completes. Every later change is just:
+
+```powershell
+git add -A
+git commit -m "what you changed"
+git push
 ```
 
 ### 4. Connect Netlify
