@@ -71,11 +71,13 @@ export const about = {
       degree: 'B.E. Mechanical Engineering',
       school: 'Prathyusha Engineering College, Thiruvallur',
       meta: 'CGPA 8.85 / 10',
+      logo: '/pec-emblem.png',
     },
     {
       degree: 'Higher Secondary (Class XII)',
       school: 'Christ King Matriculation Higher Secondary School, Thiruvallur',
       meta: '',
+      initials: 'CK',
     },
   ],
 };

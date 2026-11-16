@@ -749,10 +749,78 @@ ul {
 /* Education list (lives in the About column) */
 .education {
   display: grid;
-  gap: 18px;
+  gap: 12px;
   margin-top: 28px;
   padding-top: 26px;
   border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.edu {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.035),
+    rgba(255, 255, 255, 0.008)
+  );
+  transition:
+    border-color 0.35s ease,
+    background 0.35s ease,
+    transform 0.35s ease;
+}
+
+.edu:hover {
+  transform: translateY(-2px);
+  border-color: rgba(243, 177, 60, 0.4);
+  background: linear-gradient(
+    160deg,
+    rgba(243, 177, 60, 0.07),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+
+.edu__logo {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+.edu__logo img {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  object-fit: contain;
+}
+
+.edu__logo--mono {
+  background: linear-gradient(160deg, rgba(243, 177, 60, 0.18), rgba(229, 56, 47, 0.1));
+  box-shadow:
+    0 0 0 1px rgba(243, 177, 60, 0.32),
+    0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.edu__initials {
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent-2);
+}
+
+.edu__text {
+  min-width: 0;
 }
 
 .education__degree {

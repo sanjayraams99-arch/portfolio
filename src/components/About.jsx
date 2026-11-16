@@ -16,10 +16,30 @@ export default function About() {
 
           <ul className="education">
             {about.education.map((item) => (
-              <li key={item.degree}>
-                <p className="education__degree">{item.degree}</p>
-                <p className="education__school">{item.school}</p>
-                {item.meta ? <p className="education__meta">{item.meta}</p> : null}
+              <li className="edu" key={item.degree}>
+                <span
+                  className={`edu__logo${item.logo ? '' : ' edu__logo--mono'}`}
+                  aria-hidden="true"
+                >
+                  {item.logo ? (
+                    <img
+                      src={item.logo}
+                      alt=""
+                      width="56"
+                      height="56"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <span className="edu__initials">{item.initials}</span>
+                  )}
+                </span>
+
+                <div className="edu__text">
+                  <p className="education__degree">{item.degree}</p>
+                  <p className="education__school">{item.school}</p>
+                  {item.meta ? <p className="education__meta">{item.meta}</p> : null}
+                </div>
               </li>
             ))}
           </ul>
