@@ -6,11 +6,12 @@ const socials = [
   { key: 'twitter', label: 'X' },
 ].filter((s) => site.links[s.key]);
 
+const YEAR = new Date().getFullYear();
+
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="container footer__inner">
-        <div className="footer__brand">
+      <div className="container footer__inner">        <div className="footer__brand">
           <span className="nav__mark" aria-hidden="true">
             {site.name.charAt(0)}
           </span>
@@ -41,7 +42,7 @@ export default function Footer() {
 
       <div className="container footer__base">
         <p>
-          © {new Date().getFullYear()} {site.name}. All rights reserved.
+          © {YEAR} {site.name}. All rights reserved.
         </p>
         <p>{footer.note}</p>
       </div>

@@ -81,11 +81,16 @@ Every `git push` now rebuilds and republishes the site.
 
 ---
 
-## After you have a real domain
+## After you have a real URL
 
-Two placeholder values need updating:
+Three placeholder values need updating (they currently say `yoursite.com`):
 
 - `public/robots.txt` → the `Sitemap:` line
 - `public/sitemap.xml` → the `<loc>` value
+- `index.html` → the two `og:image` / `twitter:image` URLs
+
+The last one is what makes the link show a picture when someone shares your
+site on LinkedIn or WhatsApp. It must be a full URL, so it can only be set once
+the live address exists.
 
 Then test with Lighthouse in Chrome DevTools (F12 → Lighthouse).
