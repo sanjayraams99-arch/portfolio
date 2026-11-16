@@ -168,7 +168,16 @@ export const work = {
         'Designed an autonomous drone in CAD and evaluated its aerodynamics through CFD. Calibrated flight controllers, configured autonomous missions, and completed full drone assembly and integration for competition.',
       tags: ['CAD', 'CFD', 'Flight controller'],
       year: '2025',
-      images: [],
+      images: [
+        {
+          src: '/addc-drone-1.jpg',
+          alt: 'Team Yantramanav autonomous drone for the ADDC competition — photo 1',
+        },
+        {
+          src: '/addc-drone-2.jpg',
+          alt: 'Team Yantramanav autonomous drone for the ADDC competition — photo 2',
+        },
+      ],
     },
   ],
 };
